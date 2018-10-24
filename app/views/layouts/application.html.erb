@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sample2</title>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+                <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "btn btn-lg btn-primary" %>
+                <%= link_to 'New Post', new_post_path ,class: "btn btn-lg btn-primary" %>
+            <% else %>
+              <%= link_to 'Sign up', new_user_registration_path ,class: "btn btn-lg btn-primary" %>
+              <%= link_to 'Sign in', new_user_session_path ,class: "btn btn-lg btn-primary" %>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>

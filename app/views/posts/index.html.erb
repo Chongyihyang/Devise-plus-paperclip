@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <div class="center jumbotron">
+      <h1>Posts</h1>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.description %></td>
+          <td><%= post.user.email %></td>
+          <td><%= link_to 'Show', post  %></td>
+          <% if post.user == current_user %>
+            <td><%= link_to 'Edit', edit_post_path(post)  %></td>
+            <td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+          <td><%= image_tag post.image.url(:medium) %></td>
+        </tr>
+      <% end %>
+    </div>
+  </tbody>
+</table>

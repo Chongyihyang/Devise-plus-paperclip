@@ -51,6 +51,9 @@ class PostsController < ApplicationController
       end
     end
   end
+  def change
+    add_column :users, :avatar_meta, :data_type
+  end
 
   # DELETE /posts/1
   # DELETE /posts/1.json
